@@ -16,6 +16,7 @@ public class LoginScreen extends JFrame{
         this.setTitle("Portal do Aluno - Login");
         this.setContentPane(MainPanel);
         this.setBounds(900, 900, 1366, 768);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
     }
 

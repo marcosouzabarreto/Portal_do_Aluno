@@ -10,12 +10,12 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="7fa17" class="javax.swing.JLabel" binding="welcomePhraseLabel" custom-create="true">
+      <component id="7fa17" class="javax.swing.JLabel" binding="welcomePhraseLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="welcomePhraseLabel"/>
+          <text value=""/>
         </properties>
       </component>
       <vspacer id="83f90">
@@ -23,12 +23,12 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="408c9" class="javax.swing.JLabel" binding="roleInfoLabel" custom-create="true">
+      <component id="408c9" class="javax.swing.JLabel" binding="roleInfoLabel">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="roleInfoLabel"/>
+          <text value=""/>
         </properties>
       </component>
     </children>

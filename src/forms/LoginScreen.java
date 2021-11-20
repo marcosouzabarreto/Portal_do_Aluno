@@ -1,6 +1,8 @@
 package forms;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LoginScreen extends JFrame{
     private JPanel MainPanel;
@@ -21,6 +23,10 @@ public class LoginScreen extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
+
+        SignInButton.addActionListener(actionEvent -> {
+            new SignInScreen();
+        });
     }
 
     private void createUIComponents() {

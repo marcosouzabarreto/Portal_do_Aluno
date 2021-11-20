@@ -1,3 +1,5 @@
+package forms;
+
 import javax.swing.*;
 
 public class LoginScreen extends JFrame{
@@ -15,14 +17,10 @@ public class LoginScreen extends JFrame{
     public LoginScreen() {
         this.setTitle("Portal do Aluno - Login");
         this.setContentPane(MainPanel);
-        this.setBounds(900, 900, 1366, 768);
+        this.setBounds(0,0,1366,768);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
-    }
-
-    public void showLoginScreen () {
-        LoginScreen loginScreen = new LoginScreen();
-        loginScreen.setVisible(true);
+        this.setVisible(true);
     }
 
     private void createUIComponents() {

@@ -2,8 +2,6 @@ package forms;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class SignInScreen extends JFrame{
     private JPanel MainPanel;
@@ -46,7 +44,6 @@ public class SignInScreen extends JFrame{
 
         button1.addActionListener(actionEvent -> {
             String username = nameInput.getText();
-            System.out.println(username);
             String email = emailInput.getText();
             char[] password = passwordInput.getPassword();
 

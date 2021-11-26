@@ -27,7 +27,6 @@ public class HomePage extends JFrame{
         this.setTitle("Portal do Aluno - " + firstName);
         this.setContentPane(MainPanel);
         this.setBounds(0,0,1366,768);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
 

@@ -11,8 +11,9 @@ public class SignInScreen extends JFrame{
     private JButton button1;
     private JPasswordField passwordInput;
     private JLabel errorLabel;
+    private JComboBox<String> roleSelector;
 
-    private boolean formValidation(String username, String email, char[] password) {
+    private boolean formValidation(String username, String email, String role, char[] password) {
 
         errorLabel.setForeground(Color.RED);
 
@@ -31,6 +32,11 @@ public class SignInScreen extends JFrame{
             return false;
         }
 
+        if (role.equals("Selecione o seu cargo:")) {
+            errorLabel.setText("Cargo inválido");
+            return false;
+        }
+
         return true;
 
     }
@@ -44,12 +50,17 @@ public class SignInScreen extends JFrame{
         this.pack();
         this.setVisible(true);
 
+        roleSelector.addItem("Selecione o seu cargo:");
+        roleSelector.addItem("Aluno");
+        roleSelector.addItem("Professor");
+
         button1.addActionListener(actionEvent -> {
             String username = nameInput.getText();
             String email = emailInput.getText();
+            String role = String.valueOf(roleSelector.getSelectedItem());
             char[] password = passwordInput.getPassword();
-
-            if (formValidation(username, email, password)) {
+            System.out.println(role);
+            if (formValidation(username, email, role, password)) {
                 errorLabel.setForeground(Color.BLACK);
                 errorLabel.setText("Usuario criado com sucesso!");
 

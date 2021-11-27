@@ -9,6 +9,7 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="json-simple-1.1.1" />
           <element id="library" level="project" name="mysql-connector-java-8.0.21" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/20.1.0/annotations-20.1.0.jar" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Portal_do_Aluno/web/Web" />

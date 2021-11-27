@@ -1,8 +1,9 @@
 package forms;
 
-import pages.HomePage;
+import pages.*;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class LoginScreen extends JFrame{
     private JPanel MainPanel;
@@ -15,6 +16,7 @@ public class LoginScreen extends JFrame{
     private JPanel PasswordName;
     private JButton SignInButton;
     private JButton SubmitFormButton;
+    private JLabel mainText;
 
     private boolean validateLogin(String email, char[] password){
         // see if user exists
@@ -29,14 +31,19 @@ public class LoginScreen extends JFrame{
         this.pack();
         this.setVisible(true);
 
+        mainText.setFont(new Font("SansSerif", Font.BOLD, 32));
+        // Action Listener for Sign In Button
         SignInButton.addActionListener(actionEvent -> new SignInScreen());
+
+        // If the email and
         SubmitFormButton.addActionListener(actionEvent -> {
             String email = EmailInput.getText();
             char[] password = PassordInput.getPassword();
 
             if(validateLogin(email, password)) {
                 // TODO, still hardcoded
-                new HomePage("admin", "Marco Barreto");
+                this.dispose();
+                new HomePage("Marco Barreto", "admin");
             };
         });
     }

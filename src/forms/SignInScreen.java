@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class SignInScreen extends JFrame{
     private JPanel MainPanel;
-    private JLabel SignInLabel;
+    private JLabel signInLabel;
     private JTextField emailInput;
     private JTextField nameInput;
     private JButton button1;
@@ -21,7 +21,7 @@ public class SignInScreen extends JFrame{
             return false;
         }
 
-        if (!email.contains("@gmail.com")) {
+        if (!email.contains("@") || !email.contains(".com")) {
             errorLabel.setText("Email invalido");
             return false;
         }
@@ -36,6 +36,8 @@ public class SignInScreen extends JFrame{
     }
 
     public SignInScreen() {
+        signInLabel.setFont(new Font("SansSerif", Font.BOLD, 26));
+
         this.setTitle("Portal do Aluno - Login");
         this.setContentPane(MainPanel);
         this.setBounds(0,0,1366,768);

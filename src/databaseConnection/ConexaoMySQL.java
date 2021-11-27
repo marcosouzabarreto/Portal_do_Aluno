@@ -8,109 +8,27 @@ import java.sql.SQLException;
 
 
 public class ConexaoMySQL {
-    public static String status = "Não conectou...";
 
+        private static final String USUARIO = "root";
+        private static final String SENHA = "";
+        private static final String URL = "jdbc:mysql://127.0.0.1:3306/meubanco";
+        private static final String DRIVER = "com.mysql.jdbc.Driver";
 
-
-    public ConexaoMySQL() {
-
-    }
-
-    public static java.sql.Connection getConexaoMySQL() {
-
-        Connection connection = null;
-
-        try {
-
-            String driverName = "com.mysql.jdbc.Driver";
-
-            Class.forName(driverName);
-
-
-            String serverName = "localhost";    //caminho do servidor do BD
-
-            String mydatabase ="mysql";        //nome do seu banco de dados
-
-            String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
-
-            String username = "root";        //nome de um usuário de seu BD
-
-            String password = "123456";      //sua senha de acesso
-
-            connection = DriverManager.getConnection(url, username, password);
-
-
-            if (connection != null) {
-
-                status = ("STATUS--->Conectado com sucesso!");
-
-            } else {
-
-                status = ("STATUS--->Não foi possivel realizar conexão");
-
-            }
-
-
-
-            return connection;
-
-
-
-        } catch (ClassNotFoundException e) {  //Driver não encontrado
-
-
-
-            System.out.println("O driver expecificado nao foi encontrado.");
-
-            return null;
-
-        } catch (SQLException e) {
-
-
-            System.out.println("Nao foi possivel conectar ao Banco de Dados.");
-
-            return null;
-
+        // Conectar ao banco
+        public static Connection abrir() throws Exception {
+            // Registrar o driver
+            Class.forName(DRIVER);
+            // Capturar a conexão
+            Connection conn = DriverManager.getConnection(URL, USUARIO, SENHA);
+            // Retorna a conexao aberta
+            return conn;
         }
 
-
-
+    public static void getConexaoMySQL() {
+            System.out.println("Foi conectado ao banco de dados");
     }
 
-
-    public static String statusConection() {
-
-        return status;
-
-    }
-
-
-
-    public static boolean FecharConexao() {
-
-        try {
-
-            ConexaoMySQL.getConexaoMySQL().close();
-
-            return true;
-
-        } catch (SQLException e) {
-
-            return false;
-
-        }
-
-
-
-    }
-
-    public static java.sql.Connection ReiniciarConexao() {
-
-        FecharConexao();
-
-
-
-        return ConexaoMySQL.getConexaoMySQL();
-
+    public static boolean statusConection() {
+        return false;
     }
 }

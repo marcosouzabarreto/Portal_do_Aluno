@@ -9,10 +9,7 @@ public class ProfessorDAO {
 
     public List<Professor> buscar(Professor c) throws Exception {
 
-        String sql = "SELECT id_professor, nome_professor, password_professor " +
-                "FROM tabela_professor " +
-                "WHERE nome_professor LIKE ? " +
-                "ORDER BY nome_professor ";
+        String sql = new StringBuilder().append("SELECT id_professor, nome_professor, password_professor ").append("FROM tabela_professor ").append("WHERE nome_professor LIKE ? ").append("ORDER BY nome_professor ").toString();
 
         Connection conn = ConexaoMySQL.abrir();
 
@@ -39,5 +36,9 @@ public class ProfessorDAO {
         conn.close();
 
         return lista;
+    }
+
+    public void criar(String username, String email, char[] password) {
+
     }
 }

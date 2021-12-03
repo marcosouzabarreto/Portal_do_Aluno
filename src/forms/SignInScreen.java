@@ -1,5 +1,7 @@
 package forms;
 
+import databaseConnection.ProfessorDAO;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -64,7 +66,13 @@ public class SignInScreen extends JFrame{
                 errorLabel.setForeground(Color.BLACK);
                 errorLabel.setText("Usuario criado com sucesso!");
 
+                if(role == "admin"){
+                    new ProfessorDAO().criar(username, email, password);
+                } else if (role == "student") {
+
+                }
                 // Use data to create user
+
             }
         });
     }

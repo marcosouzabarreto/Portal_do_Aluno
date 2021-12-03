@@ -43,4 +43,8 @@ public class AlunoDAO {
         return lista;
     }
 
+    public void criar(String username, String email, char[] password) {
+        // Create student in database
+    }
+
 }

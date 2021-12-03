@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class professorDAO {
+public class ProfessorDAO {
 
-    public List<professor> buscar(professor c) throws Exception {
+    public List<Professor> buscar(Professor c) throws Exception {
 
         String sql = "SELECT id_professor, nome_professor, password_professor " +
                 "FROM tabela_professor " +
@@ -21,11 +21,11 @@ public class professorDAO {
 
         ResultSet resultado2 = comando.executeQuery();
 
-        List<professor> lista = new ArrayList<professor>();
+        List<Professor> lista = new ArrayList<Professor>();
 
         while (resultado2.next()) {
 
-            professor linha = new professor();
+            Professor linha = new Professor();
             linha.setIdprofessor(resultado2.getInt("cod_professor"));
             linha.setNomeprofessor(resultado2.getString("nome_professor"));
             linha.setPasswordprofessor(resultado2.getString("password_professor"));

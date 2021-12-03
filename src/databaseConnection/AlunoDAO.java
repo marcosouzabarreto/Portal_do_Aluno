@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class alunoDAO {
+public class AlunoDAO {
 
-    public List<aluno> buscar(aluno c) throws Exception {
+    public List<Aluno> buscar(Aluno c) throws Exception {
 
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT id_aluno, nome_aluno, password_aluno ");
@@ -23,11 +23,11 @@ public class alunoDAO {
 
         ResultSet resultado = comando.executeQuery();
 
-        List<aluno> lista = new ArrayList<aluno>();
+        List<Aluno> lista = new ArrayList<Aluno>();
 
         while (resultado.next()) {
 
-            aluno linha = new aluno();
+            Aluno linha = new Aluno();
             linha.setIdaluno(resultado.getInt("cod_aluno"));
             linha.setNomealuno(resultado.getString("nome_aluno"));
             linha.setPasswordaluno(resultado.getString("password_aluno"));

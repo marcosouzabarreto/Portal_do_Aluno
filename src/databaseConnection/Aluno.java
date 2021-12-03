@@ -1,6 +1,6 @@
 package databaseConnection;
 
-public class aluno {
+public class Aluno {
     private Integer idaluno;
     private String nomealuno;
     private String passwordaluno;

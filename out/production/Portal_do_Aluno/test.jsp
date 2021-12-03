@@ -1,9 +1,4 @@
 <%@ page import="databaseConnection.ConexaoMySQL" %>
-<%
-
-    System.out.println(ConexaoMySQL.statusConection());
-
-%>
 
 <%
 

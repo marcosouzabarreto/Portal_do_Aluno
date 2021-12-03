@@ -1,6 +1,6 @@
 package pages;
 
-import forms.LoginScreen;
+import forms.*;
 import utils.Utils;
 import javax.swing.*;
 import java.awt.*;

@@ -39,6 +39,11 @@ public class ProfessorDAO {
     }
 
     public void criar(String username, String email, char[] password) {
-
+        StringBuilder sql = new StringBuilder();
+        sql.append("CREATE TABLE professor");
+        sql.append("id_professor INT NOT NULL AUTO_INCREMENT, ");
+        sql.append(" email VARCHAR(80) NOT NULL,");
+        sql.append(" senha INT(20) NOT NULL,  ");
+        sql.append("PRIMARY KEY(id_professor)");
     }
 }

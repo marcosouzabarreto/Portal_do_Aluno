@@ -6,6 +6,8 @@ import forms.*;
 import utils.Utils;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HomePage extends JFrame{
 
@@ -25,7 +27,11 @@ public class HomePage extends JFrame{
         DefaultListModel<String> subjects = new DefaultListModel<>();
 
         if(user.getFunction().equals("student")){
-            subjects.addElement(user.getSubjects());
+            ArrayList<String> subjectsLists = new ArrayList<>(Arrays.asList(user.getSubjects().split(",")));
+
+            for(int i = 0; i < subjectsLists.size(); i++) {
+                subjects.addElement(subjectsLists.get(i));
+            }
 
         } else if (user.getFunction().equals("admin")) {
             DefaultListModel<User> students = new ReadDatabase().getAllStudents();

@@ -1,10 +1,12 @@
 package forms;
 
-import pages.SuccessfulAction;
+import pages.ActionFeedback;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 import java.util.Arrays;
+import database.*;
 
 public class SignInScreen extends JFrame{
     private JPanel MainPanel;
@@ -66,16 +68,26 @@ public class SignInScreen extends JFrame{
                 errorLabel.setText("");
 
                 if(role.equals("Professor")){
-                    //new ProfessorDAO().criar(username, email, password);
-                    System.out.println("Criando professor com "+ username + email + Arrays.toString(password));
+                    try {
+                        new InsertIntoDatabase(username, email,
+                                "Matematica", "admin",
+                                Arrays.toString(password)).insertRecord();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
 
                 } else if (role.equals("Aluno")) {
-                    System.out.println("Criando aluno com " + username + email + Arrays.toString(password));
+                    try {
+                        new InsertIntoDatabase(username, email,
+                                "Matematica", "student",
+                                Arrays.toString(password)).insertRecord();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 this.dispose();
-                new SuccessfulAction("Usuário criado com sucesso!");
-                // Use data to create user
+                new ActionFeedback("Usuário criado com sucesso!", false);
 
             }
         });

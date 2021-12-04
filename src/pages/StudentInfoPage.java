@@ -1,5 +1,6 @@
 package pages;
 
+import database.User;
 import forms.LoginScreen;
 import utils.Utils;
 
@@ -18,9 +19,9 @@ public class StudentInfoPage extends JFrame{
     private JTable table1;
     private JButton returnButton;
 
-    public StudentInfoPage(String studentName, String teacherName) {
-        this.studentName = studentName;
-        this.teacherName = teacherName;
+    public StudentInfoPage(User teacher, User student) {
+        this.studentName = teacher.getName();
+        this.teacherName = student.getName();
 
         String firstName = new Utils().getFirstName(this.studentName);
         studentNameLabel.setText("Informações sobre " + firstName);
@@ -36,7 +37,7 @@ public class StudentInfoPage extends JFrame{
 
         returnButton.addActionListener(e -> {
             this.dispose();
-            new HomePage(teacherName, "admin");
+            new HomePage(teacher);
         });
     }
 

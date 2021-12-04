@@ -1,9 +1,12 @@
 package forms;
 
+import database.ReadDatabase;
+import database.User;
 import pages.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 public class LoginScreen extends JFrame{
     private JPanel MainPanel;
@@ -18,9 +21,9 @@ public class LoginScreen extends JFrame{
     private JButton SubmitFormButton;
     private JLabel mainText;
 
-    private boolean validateLogin(String email, char[] password){
-        // see if user exists
-        return true;
+    private boolean validateLogin(String email, char[] password, User user){
+
+        return user.getPasswd().equals(Arrays.toString(password));
     }
 
     public LoginScreen() {
@@ -40,11 +43,13 @@ public class LoginScreen extends JFrame{
             String email = EmailInput.getText();
             char[] password = PassordInput.getPassword();
 
-            if(validateLogin(email, password)) {
-                // TODO, still hardcoded
+            User user = new ReadDatabase().getUserByEmail(email);
+
+            if(validateLogin(email, password, user)) {
                 this.dispose();
-                new HomePage("Marco Barreto", "student");
+                new HomePage(user);
             }
+
         });
     }
 

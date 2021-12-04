@@ -1,5 +1,7 @@
 package pages;
 
+import database.ReadDatabase;
+import database.User;
 import forms.*;
 import utils.Utils;
 import javax.swing.*;
@@ -11,46 +13,54 @@ public class HomePage extends JFrame{
     private JLabel welcomePhraseLabel;
     private JPanel SubjectsPanel;
     private JList<String> subjectsList;
-    private JButton studentOrGradeInfoButton;
+    private JButton studentInfoButton;
     private JLabel noSubjectsFoundText;
     private JPanel noSubjectsFoundPanel;
     private JLabel listTitle;
     private JButton returnButton;
 
 
-    public HomePage(String username, String role) {
+    public HomePage(User user) {
 
         DefaultListModel<String> subjects = new DefaultListModel<>();
 
-        subjects.addElement("Teste");
-        subjects.addElement("Teste 2");
+        if(user.getFunction().equals("student")){
+            subjects.addElement(user.getSubjects());
 
+        } else if (user.getFunction().equals("admin")) {
+            DefaultListModel<User> students = new ReadDatabase().getAllStudents();
+            for(int i = 0; i < students.size(); i++){
+                subjects.addElement(students.getElementAt(i).getName());
+            }
+        }
+
+        subjectsList.setModel(subjects);
         // Align JList elements to center
         new Utils().alignJListElementsToCenter(subjectsList);
 
-        subjectsList.setModel(subjects);
+
 
         if (subjects.isEmpty()) {
             subjectsList.setVisible(false);
-            studentOrGradeInfoButton.setVisible(false);
+            studentInfoButton.setVisible(false);
         } else {
             noSubjectsFoundPanel.setVisible(false);
         }
 
-        String firstName = new Utils().getFirstName(username);
+        String firstName = new Utils().getFirstName(user.getName());
 
         welcomePhraseLabel.setText("Bem vindo, " + firstName + "!");
         welcomePhraseLabel.setFont(new Font("SansSerif", Font.BOLD, 26));
 
-        if (role.equals("student")) {
+        if (user.getFunction().equals("student")) {
             this.setTitle("Portal do Aluno - " + firstName);
             listTitle.setText("Suas matérias:");
 
-            studentOrGradeInfoButton.setVisible(false);
+            studentInfoButton.setVisible(false);
         } else {
             this.setTitle("Portal do Professor - " + firstName);
             listTitle.setText("Seus alunos:");
-            studentOrGradeInfoButton.setText("Informações do aluno:");
+            studentInfoButton.setText("Informações do aluno:");
         }
         this.setContentPane(MainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,8 +73,14 @@ public class HomePage extends JFrame{
             new LoginScreen();
         });
 
-        studentOrGradeInfoButton.addActionListener(e -> {
-            new StudentInfoPage("Marco Aurélio Souza Barreto", username);
+        studentInfoButton.addActionListener(e -> {
+            User student = new ReadDatabase().getUserByName(subjectsList.getSelectedValue());
+            if(student != null){
+                new StudentInfoPage(user, student);
+            } else {
+                new ActionFeedback("Usuário inexistente", true);
+            }
+
         });
     }
 

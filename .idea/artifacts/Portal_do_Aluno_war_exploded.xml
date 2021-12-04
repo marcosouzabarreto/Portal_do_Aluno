@@ -1,18 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="Portal_do_Aluno:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/Portal_do_Aluno_war_exploded</output-path>
-    <root id="root">
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="classes">
-          <element id="module-output" name="Portal_do_Aluno" />
-        </element>
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="json-simple-1.1.1" />
-          <element id="library" level="project" name="mysql-connector-java-8.0.21" />
-          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/20.1.0/annotations-20.1.0.jar" />
-        </element>
-      </element>
-      <element id="javaee-facet-resources" facet="Portal_do_Aluno/web/Web" />
-    </root>
+    <root id="root" />
   </artifact>
 </component>

@@ -1,9 +1,10 @@
 package forms;
 
-import databaseConnection.ProfessorDAO;
+import pages.SuccessfulAction;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 public class SignInScreen extends JFrame{
     private JPanel MainPanel;
@@ -61,16 +62,19 @@ public class SignInScreen extends JFrame{
             String email = emailInput.getText();
             String role = String.valueOf(roleSelector.getSelectedItem());
             char[] password = passwordInput.getPassword();
-            System.out.println(role);
             if (formValidation(username, email, role, password)) {
-                errorLabel.setForeground(Color.BLACK);
-                errorLabel.setText("Usuario criado com sucesso!");
+                errorLabel.setText("");
 
-                if(role == "admin"){
-                    new ProfessorDAO().criar(username, email, password);
-                } else if (role == "student") {
+                if(role.equals("Professor")){
+                    //new ProfessorDAO().criar(username, email, password);
+                    System.out.println("Criando professor com "+ username + email + Arrays.toString(password));
 
+                } else if (role.equals("Aluno")) {
+                    System.out.println("Criando aluno com " + username + email + Arrays.toString(password));
                 }
+
+                this.dispose();
+                new SuccessfulAction("Usuário criado com sucesso!");
                 // Use data to create user
 
             }

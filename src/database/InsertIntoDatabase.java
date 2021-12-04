@@ -9,7 +9,7 @@ public class InsertIntoDatabase {
             "  (name, email,subjects, function, passwd) VALUES " +
             " (?, ?, ?, ?, ?);";
 
-    public static void main(String[] argv) throws SQLException {
+    public static void main(String[] args) throws SQLException {
         InsertIntoDatabase createTableExample = new InsertIntoDatabase();
         createTableExample.insertRecord();
     }

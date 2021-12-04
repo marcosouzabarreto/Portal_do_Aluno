@@ -14,7 +14,7 @@ public class CreateDatabase {
             "  function varchar(255),\r\n" +
             "  passwd varchar(255)\r\n" + ");";
 
-    public static void main(String[] argv) throws SQLException {
+    public static void main(String[] args) throws SQLException {
         CreateDatabase createTableExample = new CreateDatabase();
         createTableExample.createTable();
     }

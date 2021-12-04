@@ -4,6 +4,7 @@ import pages.SuccessfulAction;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 public class SignInScreen extends JFrame{
@@ -15,8 +16,11 @@ public class SignInScreen extends JFrame{
     private JPasswordField passwordInput;
     private JLabel errorLabel;
     private JComboBox<String> roleSelector;
+    private JTextField dateInput;
+    private JPanel dateSelector;
 
-    private boolean formValidation(String username, String email, String role, char[] password) {
+
+    private boolean formValidation(String username, String email, String role, char[] password, String date) {
 
         errorLabel.setForeground(Color.RED);
 
@@ -39,7 +43,10 @@ public class SignInScreen extends JFrame{
             errorLabel.setText("Cargo inválido");
             return false;
         }
-
+        if(!date.contains("-")){
+            errorLabel.setText("Data inválida");
+            return false;
+        }
         return true;
 
     }
@@ -57,12 +64,18 @@ public class SignInScreen extends JFrame{
         roleSelector.addItem("Aluno");
         roleSelector.addItem("Professor");
 
+        dateSelector.setVisible(false);
+        roleSelector.addActionListener(e -> {
+            dateSelector.setVisible(String.valueOf(roleSelector.getSelectedItem()).equals("Aluno"));
+        });
+
         button1.addActionListener(actionEvent -> {
             String username = nameInput.getText();
             String email = emailInput.getText();
             String role = String.valueOf(roleSelector.getSelectedItem());
             char[] password = passwordInput.getPassword();
-            if (formValidation(username, email, role, password)) {
+            String date= dateInput.getText();
+            if (formValidation(username, email, role, password, date)) {
                 errorLabel.setText("");
 
                 if(role.equals("Professor")){

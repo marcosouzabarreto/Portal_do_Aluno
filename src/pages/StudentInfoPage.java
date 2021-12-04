@@ -1,11 +1,13 @@
 package pages;
 
 import database.User;
-import forms.LoginScreen;
+import forms.NewSubjectForm;
 import utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class StudentInfoPage extends JFrame{
     private final String teacherName;
@@ -16,8 +18,9 @@ public class StudentInfoPage extends JFrame{
     private JPanel studentInfoPanel;
     private JLabel fullNameLabel;
     private JPanel gradesPanel;
-    private JTable table1;
     private JButton returnButton;
+    private JButton addSubjectButton;
+    private JList<String> subjectsList;
 
     public StudentInfoPage(User teacher, User student) {
         this.studentName = student.getName();
@@ -34,6 +37,20 @@ public class StudentInfoPage extends JFrame{
         this.setBounds(0,0,1366,768);
         this.pack();
         this.setVisible(true);
+
+        ArrayList<String> subjectsLists = new ArrayList<>(Arrays.asList(student.getSubjects().split(",")));
+        DefaultListModel<String> subjectsListModel = new DefaultListModel<>();
+
+        for(int i = 0; i < subjectsLists.size(); i++) {
+            subjectsListModel.addElement(subjectsLists.get(i));
+        }
+
+        subjectsList.setModel(subjectsListModel);
+
+        addSubjectButton.addActionListener(e -> {
+            this.dispose();
+            new NewSubjectForm(student, teacher);
+        });
 
         returnButton.addActionListener(e -> {
             this.dispose();

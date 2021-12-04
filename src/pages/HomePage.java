@@ -4,11 +4,8 @@ import forms.*;
 import utils.Utils;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class HomePage extends JFrame{
-
-    private final String role;
 
     private JPanel MainPanel;
     private JLabel welcomePhraseLabel;
@@ -22,7 +19,6 @@ public class HomePage extends JFrame{
 
 
     public HomePage(String username, String role) {
-        this.role = role;
 
         DefaultListModel<String> subjects = new DefaultListModel<>();
 
@@ -46,10 +42,11 @@ public class HomePage extends JFrame{
         welcomePhraseLabel.setText("Bem vindo, " + firstName + "!");
         welcomePhraseLabel.setFont(new Font("SansSerif", Font.BOLD, 26));
 
-        if (this.role.equals("student")) {
+        if (role.equals("student")) {
             this.setTitle("Portal do Aluno - " + firstName);
             listTitle.setText("Suas matérias:");
-            studentOrGradeInfoButton.setText("Informações da matéria");
+
+            studentOrGradeInfoButton.setVisible(false);
         } else {
             this.setTitle("Portal do Professor - " + firstName);
             listTitle.setText("Seus alunos:");
@@ -67,7 +64,7 @@ public class HomePage extends JFrame{
         });
 
         studentOrGradeInfoButton.addActionListener(e -> {
-            new StudentInfoPage("Marco");
+            new StudentInfoPage("Marco Aurélio Souza Barreto", username);
         });
     }
 

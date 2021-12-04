@@ -43,8 +43,8 @@ public class LoginScreen extends JFrame{
             if(validateLogin(email, password)) {
                 // TODO, still hardcoded
                 this.dispose();
-                new HomePage("Marco Barreto", "admin");
-            };
+                new HomePage("Marco Barreto", "student");
+            }
         });
     }
 

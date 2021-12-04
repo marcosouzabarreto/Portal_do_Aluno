@@ -20,8 +20,8 @@ public class StudentInfoPage extends JFrame{
     private JButton returnButton;
 
     public StudentInfoPage(User teacher, User student) {
-        this.studentName = teacher.getName();
-        this.teacherName = student.getName();
+        this.studentName = student.getName();
+        this.teacherName = teacher.getName();
 
         String firstName = new Utils().getFirstName(this.studentName);
         studentNameLabel.setText("Informações sobre " + firstName);

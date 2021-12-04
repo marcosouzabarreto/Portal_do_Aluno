@@ -70,7 +70,7 @@ public class SignInScreen extends JFrame{
                 if(role.equals("Professor")){
                     try {
                         new InsertIntoDatabase(username, email,
-                                "Matematica", "admin",
+                                "", "admin",
                                 Arrays.toString(password)).insertRecord();
                     } catch (SQLException e) {
                         e.printStackTrace();
@@ -79,7 +79,7 @@ public class SignInScreen extends JFrame{
                 } else if (role.equals("Aluno")) {
                     try {
                         new InsertIntoDatabase(username, email,
-                                "Matematica", "student",
+                                "", "student",
                                 Arrays.toString(password)).insertRecord();
                     } catch (SQLException e) {
                         e.printStackTrace();
